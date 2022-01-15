@@ -77,15 +77,15 @@ Things you may want to cover:
 
 ## delivery_address テーブル
 
-| Colum          | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| post_code      | string     | null: false                    |
-| prefectures_id | integer    | null: false                    |
-| city           | string     | null: false                    |
-| street         | string     | null: false                    |
-| building       | string     |                                |
-| tel_number     | string     | null: false                    |
-| buyer          | references | null: false, foreign_key: true |
+| Colum            | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| post_code        | string     | null: false                    |
+| delivery_area_id | integer    | null: false                    |
+| city             | string     | null: false                    |
+| street           | string     | null: false                    |
+| building         | string     |                                |
+| tel_number       | string     | null: false                    |
+| buyer            | references | null: false, foreign_key: true |
 
 ### Association
 
