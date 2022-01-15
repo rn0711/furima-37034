@@ -59,8 +59,8 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to: users
-- has_one: buyers
+- belongs_to: user
+- has_one: buyer
 
 ## buyers テーブル
 
@@ -71,22 +71,22 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to: users
-- belongs_to: items
+- belongs_to: user
+- belongs_to: item
 - has_one: delivery_address
 
 ## delivery_address テーブル
 
 | Colum          | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| post_code      | integer    | null: false                    |
+| post_code      | string     | null: false                    |
 | prefectures_id | integer    | null: false                    |
 | city           | string     | null: false                    |
 | street         | string     | null: false                    |
 | building       | string     |                                |
-| tel_number     | integer    | null: false                    |
-| buyers         | references | null: false, foreign_key: true |
+| tel_number     | string     | null: false                    |
+| buyer          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to: buyers
+- belongs_to: buyer
