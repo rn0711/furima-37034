@@ -12,4 +12,6 @@ class Item < ApplicationRecord
 
   validates :category_id, :condition_id, :postage_id, :delivery_area_id, :delivery_date_id, numericality: { other_than: 1, message: "can't be blank"}
 
+  belongs_to :user
+
 end
