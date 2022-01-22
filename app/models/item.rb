@@ -12,6 +12,8 @@ class Item < ApplicationRecord
 
   validates :category_id, :condition_id, :postage_id, :delivery_area_id, :delivery_date_id, numericality: { other_than: 1, message: "can't be blank"}
 
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+
   belongs_to :user
 
 end
