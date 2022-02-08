@@ -1,5 +1,5 @@
 class BuyersController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, only: [:index, :create]
 
   def index
     @buyer_address = BuyerAddress.new
@@ -14,9 +14,11 @@ class BuyersController < ApplicationController
     else
       render :index
     end
+  end
 
     private
 
     def buyer_params
       params.require(:buyer_address).permit(:post_code, :delivery_area_id, :city, :street, :building, :tel_number).merge(user_id: current_user.id, item_id: @item.id)
+    end
 end
