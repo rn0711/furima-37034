@@ -20,11 +20,20 @@ class BuyersController < ApplicationController
     private
 
     def buyer_params
-      params.require(:buyer_address).permit(:post_code, :delivery_area_id, :city, :street, :building, :tel_number).merge(user_id: current_user.id, item_id: @item.id)
+      params.require(:buyer_address).permit(:post_code, :delivery_area_id, :city, :street, :building, :tel_number).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
     end
 
     def set_item
       @item = Item.find(params[:item_id])
       @buyers = Buyer.all
+    end
+
+    def pay_item
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+      Payjp::Charge.create(
+        amount: @item.price,
+        card: buyer_params[:token],
+        currency: 'jpy'
+      )
     end
 end
